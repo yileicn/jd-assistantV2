@@ -366,6 +366,21 @@ class Assistant(object):
         reserve_url = resp_json.get('url')
         return 'https:' + reserve_url if reserve_url else None
 
+    def get_reserve_info(self, sku_id):
+        url = 'https://yushou.jd.com/youshouinfo.action'
+        payload = {
+            'callback': 'fetchJSON',
+            'sku': sku_id,
+        }
+        headers = {
+            'User-Agent': self.user_agent,
+            'Referer': 'https://item.jd.com/{}.html'.format(sku_id),
+        }
+        resp = self.sess.get(url=url, params=payload, headers=headers)
+        resp_json = parse_json(resp.text)
+        # {"type":"1","hasAddress":false,"riskCheck":"0","flag":false,"num":941723,"stime":"2018-10-12 12:40:00","plusEtime":"","qiangEtime":"","showPromoPrice":"0","qiangStime":"","state":2,"sku":100000287121,"info":"\u9884\u7ea6\u8fdb\u884c\u4e2d","isJ":0,"address":"","d":48824,"hidePrice":"0","yueEtime":"2018-10-19 15:01:00","plusStime":"","isBefore":0,"url":"//yushou.jd.com/toYuyue.action?sku=100000287121&key=237af0174f1cffffd227a2f98481a338","etime":"2018-10-19 15:01:00","plusD":48824,"category":"4","plusType":0,"yueStime":"2018-10-12 12:40:00"};
+        return resp_json
+
     @check_login
     def make_reserve(self, sku_id, buy_time):
         """商品预约
