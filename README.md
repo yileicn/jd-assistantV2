@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![star, issue](https://img.shields.io/badge/star%2C%20issue-welcome-brightgreen.svg)](https://github.com/tychxn/jd-assistant)
 
-京东抢购助手（短期内不再更新）
+京东抢购助手
 
 ## 主要功能
 
@@ -47,7 +47,7 @@ pip install -r requirements.txt
 
 ## 使用教程
 
-程序主入口在 `main.py`
+程序主入口在 `mainV2.py`
 
 👉 [使用教程请参看Wiki](https://github.com/tychxn/jd-assistant/wiki/1.-%E4%BA%AC%E4%B8%9C%E6%8A%A2%E8%B4%AD%E5%8A%A9%E6%89%8B%E7%94%A8%E6%B3%95)
 
