@@ -6,6 +6,7 @@ import os
 import random
 import re
 import warnings
+import sys
 from base64 import b64encode
 
 import requests
@@ -119,7 +120,16 @@ def save_image(resp, image_file):
 def parse_json(s):
     begin = s.find('{')
     end = s.rfind('}') + 1
-    return json.loads(s[begin:end])
+    if begin < 0 or end < 0:
+        return {}
+    else:
+        try:
+            return json.loads(s[begin:end])
+        except:
+            print("json:", s)
+            print("Unexpected error:", sys.exc_info())
+            return {}
+        
 
 
 def get_tag_value(tag, key='', index=0):
