@@ -1141,8 +1141,8 @@ class Assistant(object):
                 logger.info("抢购链接获取成功: %s", seckill_url)
                 return seckill_url
             else:
-                logger.info("抢购链接获取失败，%s不是抢购商品或抢购页面暂未刷新，1秒后重试", sku_id)
-                time.sleep(1)
+                logger.info("抢购链接获取失败，%s不是抢购商品或抢购页面暂未刷新，0.1秒后重试", sku_id)
+                time.sleep(0.1)
 
     def request_seckill_url(self, sku_id):
         """访问商品的抢购链接（用于设置cookie等）
@@ -1290,6 +1290,8 @@ class Assistant(object):
             total_money = resp_json.get('totalMoney')
             pay_url = 'https:' + resp_json.get('pcUrl')
             logger.info('抢购成功，订单号: %s, 总价: %s, 电脑端付款链接: %s', order_id, total_money, pay_url)
+            if self.send_message:
+                self.messenger.send(text='jd-assistant 订单抢购成功', desp='订单号：%s' % order_id)
             return True
         else:
             logger.info('抢购失败，返回信息: %s', resp_json)
