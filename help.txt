@@ -1,0 +1,13 @@
+1.area_id在哪里查询
+运行 area_id 文件夹中的 Python 脚本，根据提示逐级选择区域。感谢 @6r6 提供脚本～
+python get_area_id.py
+
+2. eid, fp, track_id, risk_control 参数如何获取？
+打开京东PC端官网，并登陆
+随便加一个商品进入购物车，然后点击 去结算
+在订单结算页面打开开发者工具，在Console中执行以下 Javascript 代码：
+var eid = $('#eid').val();
+var fp = $('#fp').val();
+var trackId = getTakId();
+var riskControl = $('#riskControl').val();
+console.log(`eid = ${eid}\nfp = ${fp}\ntrack_id = ${trackId}\nrisk_control = ${riskControl}`);
