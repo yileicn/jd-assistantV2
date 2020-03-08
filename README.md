@@ -1,4 +1,10 @@
-# JD-Assistant
+需要exe版本的，加群611490317，抢不抢到看运气，主要看网速，最好是用北京的服务器，不要问抢不抢的到，下面是两张订单图
+<br>
+<img src='https://github.com/yileicn/jd-assistantV2/blob/master/img/order1.jpg' width='360px'/>
+<img src='https://github.com/yileicn/jd-assistantV2/blob/master/img/order2.jpg' width='360px'/>
+
+
+# JD-AssistantV2
 
 [![version](https://img.shields.io/badge/python-3.4+-blue.svg)](https://www.python.org/download/releases/3.4.0/) 
 [![status](https://img.shields.io/badge/status-stable-green.svg)](https://github.com/tychxn/jd-assistant)
