@@ -1,6 +1,8 @@
 __pycache__/
 .idea/
 cookies/
+build/
+dist/
 
 *.log
 *.png
