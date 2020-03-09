@@ -641,6 +641,19 @@ class Assistant(object):
         resp = self.sess.get(url=url, params=payload)
         return parse_json(resp.text).get('p')
 
+    def get_item_info(self, sku_id):
+        resp = self._get_item_detail_page(sku_id)
+        soup = BeautifulSoup(resp.text, "html.parser")
+        name = get_tag_value(soup.select("div.sku-name"))
+        price = self.get_item_price(sku_id)
+        return {'name':name,'price':price}
+    
+    def print_item_info(self, sku_id):
+        item_info = self.get_item_info(sku_id)
+        print("商品名称:",item_info.get('name'))
+        print("商品价格:",item_info.get('price'))
+
+
     @check_login
     def add_item_to_cart(self, sku_ids):
         """添加商品到购物车
@@ -1323,6 +1336,13 @@ class Assistant(object):
         else:
             logger.info('执行结束，抢购%s失败！', sku_id)
             return False
+
+    def get_sys_para(self, sku_id):
+        """自动获取系统参数"""
+        self.add_item_to_cart(sku_ids=sku_id)  # 根据商品id添加购物车
+        self.get_checkout_page_detail()
+        self.track_id = self.sess.cookies['TrackID']
+
 
     def exec_seckill_by_time(self, sku_ids, buy_time, retry=4, interval=4, num=1):
         """定时抢购
