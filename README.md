@@ -1,4 +1,4 @@
-exe在dist目录，需要的自取
+exe在dist目录，需要的自取<br>
 抢不抢到看运气，主要看网速，最好是用北京的服务器，不要问抢不抢的到，下面是两张订单图
 <br>
 <img src='https://github.com/yileicn/jd-assistantV2/blob/master/img/order1.jpg' width='360px'/>
